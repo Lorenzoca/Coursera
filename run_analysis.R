@@ -49,7 +49,10 @@ mergedMelt<-melt(merged_all,id.vars=c(names(merged_all[,c(1:2)])),measure.vars<-
 tidy_data<-dcast(mergedMelt,activity_name + subject_id~variable,mean)
 
 
-## WARNING: it was not clear from the assignment description if we had to compute average values
+names(tidy_data)[3:68]<-features_names[mean_or_std]
+
+
+## WARNING: it was not very clear from the assignment description if we had to compute average values
 ## for subject-only or activity-only values. This script by default calculates 
 ## average values for the INTERACTIONS between subjects AND activities (30*6 combinations): in case
 ## the user wants to calculate average values only PER SUBJECT or PER ACTIVITY, please use one these 
@@ -58,6 +61,7 @@ tidy_data<-dcast(mergedMelt,activity_name + subject_id~variable,mean)
 ## tidy_data<-dcast(mergedMelt,subject_id~variable,mean)
 ## PER ACTIVITY:
 ## tidy_data<-dcast(mergedMelt,activity_name~variable,mean) 
+
 
 ## Writes the new formatted dataset as a space-delimited txt file
 
