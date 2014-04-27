@@ -13,7 +13,11 @@ source("run_analysis.R")
 This will create a space-delimited file called "tidy_measurements.txt".
 
 
+
+
+
 Explanation of run_analysis.R script:
+
 
 This scripts reads different files in the "UCI HAR Dataset" folder.
 First it gets the names of the measurements in the "features" file to assign a 
