@@ -3,7 +3,6 @@
 
 library("reshape2")
 
-
 ## read the train/test files and all the info about the different
 ## variables, and assigns names to each one of the imported measurements
 
@@ -21,17 +20,13 @@ train_data <- read.table("UCI HAR Dataset/train/X_train.txt",header=F,col.names=
 train_activity_lab <- read.table("UCI HAR Dataset/train/y_train.txt",header=F)
 train_subject_lab <- read.table("UCI HAR Dataset/train/subject_train.txt",header=F)
 
-
-
 ## Merge train and test data, and select only the measurements for mean and std values
-
 
 merged_data<-rbind(train_data,test_data)
 merged_activity_lab<-rbind(train_activity_lab,test_activity_lab)
 merged_subject_lab<-rbind(train_subject_lab,test_subject_lab)
 
 mean_or_std<-intersect(grep(pattern="mean|std" ,x=features_names,fixed=F,),grep("meanF",x=features_names,invert=TRUE))
-
 merged_data<-merged_data[,c(mean_or_std)]
 
 ## Change activity ids to activity names, using the "activity_names" file content
@@ -63,7 +58,6 @@ tidy_data<-dcast(mergedMelt,activity_name + subject_id~variable,mean)
 ## tidy_data<-dcast(mergedMelt,subject_id~variable,mean)
 ## PER ACTIVITY:
 ## tidy_data<-dcast(mergedMelt,activity_name~variable,mean) 
-
 
 ## Writes the new formatted dataset as a space-delimited txt file
 
